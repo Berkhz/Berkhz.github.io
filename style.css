@@ -114,6 +114,12 @@ button[type="submit"]:hover {
   background-color: #6190d6;
 }
 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 #esqueceu-senha {
   position: relative;
   width: 110px;

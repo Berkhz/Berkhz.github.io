@@ -109,7 +109,7 @@ button[type="button"] {
   font-size: 18px;
 }
 
-.link-imagem {
+#link-imagem {
   display: none;
   position: relative;
   width: 130px;

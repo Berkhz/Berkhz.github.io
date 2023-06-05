@@ -21,7 +21,7 @@ function valorBotao() {
 
 function verificarLogin() {
   const valorCPF = document.getElementById('number').value; // Valor do CPF inserido
-  const valorSenha = document.getElementById("password").value; // Valor da senha inserida
+  const valorSenha = document.getElementById('password').value; // Valor da senha inserida
 
   const cpfArmazenado = localStorage.getItem("cpf");
   const senhaArmazenada = localStorage.getItem("password");

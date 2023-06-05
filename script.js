@@ -1,14 +1,27 @@
-let mensagem = document.getElementsByClassName('form-control');
+let mensagem = document.querySelector('.form-control');
 let valorCPF, valorEmail, valorSenha;
 
 function valorBotao() {
-valorCPF = document.getElementById('number').value; // Valor do CPF inserido
-valorEmail = document.getElementById("email").value; // Valor do email inserido
-valorSenha = document.getElementById("password").value; // Valor da senha inserida
+  var botao = document.querySelector("button");
+  botao.classList.add("loading");
+  botao.disabled = true;
+
+  setTimeout(function() {
+    botao.classList.remove("loading");
+    botao.disabled = false;
+  }, 5000);
+
+  valorCPF = document.getElementById('number').value; // Valor do CPF inserido
+  valorEmail = document.getElementById("email").value; // Valor do email inserido
+  valorSenha = document.getElementById("password").value; // Valor da senha inserida
 
   localStorage.setItem("cpf", valorCPF);
   localStorage.setItem("email", valorEmail);
   localStorage.setItem("senha", valorSenha);
+
+  console.log(valorCPF);
+  console.log(valorEmail);
+  console.log(valorSenha);
 
   window.location.href = "home.html";
 }
@@ -17,12 +30,29 @@ function verificarLogin() {
   const cpfArmazenado = localStorage.getItem("cpf");
   const senhaArmazenada = localStorage.getItem("senha");
 
+  // Obter número de tentativas armazenado no localStorage
+  let numeroTentativas = localStorage.getItem("numeroTentativas");
+
+  // Se não houver valor armazenado, definir como 0
+  if (!numeroTentativas) {
+    numeroTentativas = 0;
+  }
+
   if (valorCPF === cpfArmazenado && valorSenha === senhaArmazenada) {
     // Valores correspondem, pode prosseguir para o login
     window.location.href = "dashboard.html";
   } else {
-    // Valores não correspondem, exibir mensagem de erro
-    mensagem.innerHTML = 'Os valores informados estão incorretos. Verifique novamente.';
+    // Valores não correspondem, incrementar o número de tentativas
+    numeroTentativas++;
+    localStorage.setItem("numeroTentativas", numeroTentativas);
+
+    if (numeroTentativas >= 3) {
+      // Se excedeu o número de tentativas permitidas, redirecionar para a tela de registro
+      window.location.href = "index.html";
+    } else {
+      // Valores incorretos, exibir mensagem de erro
+      mensagem.innerHTML = 'Os valores informados estão incorretos. Verifique novamente.';
+    }
   }
 }
 

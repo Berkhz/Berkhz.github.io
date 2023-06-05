@@ -1,5 +1,4 @@
 let mensagem = document.querySelector('.form-control');
-let valorCPF, valorEmail, valorSenha;
 
 function valorBotao() {
   var botao = document.querySelector("button");
@@ -11,56 +10,39 @@ function valorBotao() {
     botao.disabled = false;
   }, 5000);
 
-  valorCPF = document.getElementById('number').value; // Valor do CPF inserido
-  valorEmail = document.getElementById("email").value; // Valor do email inserido
-  valorSenha = document.getElementById("password").value; // Valor da senha inserida
+  const valorCPF = document.getElementById('number').value; // Valor do CPF inserido
+  const valorSenha = document.getElementById("password").value; // Valor da senha inserida
 
   localStorage.setItem("cpf", valorCPF);
-  localStorage.setItem("email", valorEmail);
-  localStorage.setItem("senha", valorSenha);
-
-  console.log(valorCPF);
-  console.log(valorEmail);
-  console.log(valorSenha);
+  localStorage.setItem("password", valorSenha);
 
   window.location.href = "home.html";
 }
 
-function verificarLogin(valorCPF, valorSenha) {
+function verificarLogin() {
+  const valorCPF = document.getElementById('number').value; // Valor do CPF inserido
+  const valorSenha = document.getElementById("password").value; // Valor da senha inserida
+
   const cpfArmazenado = localStorage.getItem("cpf");
-  const senhaArmazenada = localStorage.getItem("senha");
+  const senhaArmazenada = localStorage.getItem("password");
 
-  let numeroTentativas;
-
-  if (!numeroTentativas) {
-    numeroTentativas = 0;
-  }
-
-  if (valorCPF == cpfArmazenado && valorSenha == senhaArmazenada) {
+  if (valorCPF === cpfArmazenado && valorSenha === senhaArmazenada) {
     // Valores correspondem, pode prosseguir para o login
-    window.location.href = "dashboard.html";
+    window.location.href = "landing.html";
   } else {
-    // Valores não correspondem, incrementar o número de tentativas
-    numeroTentativas++;
+    // Valores incorretos, exibir mensagem de erro
+    mensagem.innerHTML = 'Os valores informados estão incorretos. <br> tente novamente!';
+    mensagem.classList.add('mensagem');
+    let count = 3;
+    const countdown = setInterval(function() {
+      mensagem.innerHTML = 'Nova tentativa em: ' + count;
+      count--;
 
-    if (numeroTentativas >= 3) {
-      // Se excedeu o número de tentativas permitidas, redirecionar para a tela de registro
-      window.location.href = "index.html";
-    } else {
-      // Valores incorretos, exibir mensagem de erro
-      mensagem.innerHTML = 'Os valores informados estão incorretos. <br> tente novamente!';
-      mensagem.classList.add('mensagem');
-      let count = 3;
-      const countdown = setInterval(function() {
-        mensagem.innerHTML = 'Nova tentativa em: ' + count;
-        count--;
-
-        if (count < 0) {
-          clearInterval(countdown);
-          location.reload(); // Atualizar a página
-        }
-      }, 1000);
-    }
+      if (count < 0) {
+        clearInterval(countdown);
+        location.reload(); // Atualizar a página
+      }
+    }, 1000);
   }
 }
 

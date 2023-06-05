@@ -6,6 +6,7 @@
 .mensagem {
   color: red;
   font-size: 18px;
+  font-family: sans-serif;
 }
 
 .button-loading {

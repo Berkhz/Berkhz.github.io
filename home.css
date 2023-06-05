@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+.mensagem {
+  color: red;
+  font-size: 18px;
+}
+
 .background-image {
   background-image: url('img/CaminhaoLixo.jpg');
   background-size: cover;

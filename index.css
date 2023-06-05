@@ -3,6 +3,11 @@
   100% { transform: rotate(360deg); }
 }
 
+.mensagem {
+  color: red;
+  font-size: 18px;
+}
+
 .button-loading {
   position: relative;
   overflow: hidden;

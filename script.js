@@ -48,7 +48,18 @@ function verificarLogin(valorCPF, valorSenha) {
       window.location.href = "index.html";
     } else {
       // Valores incorretos, exibir mensagem de erro
-      mensagem.innerHTML = 'Os valores informados estão incorretos. Verifique novamente.';
+      mensagem.innerHTML = 'Os valores informados estão incorretos. <br> tente novamente!';
+      mensagem.classList.add('mensagem');
+      let count = 3;
+      const countdown = setInterval(function() {
+        mensagem.innerHTML = 'Nova tentativa em: ' + count;
+        count--;
+
+        if (count < 0) {
+          clearInterval(countdown);
+          location.reload(); // Atualizar a página
+        }
+      }, 1000);
     }
   }
 }

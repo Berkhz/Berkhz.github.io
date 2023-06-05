@@ -26,25 +26,22 @@ function valorBotao() {
   window.location.href = "home.html";
 }
 
-function verificarLogin() {
+function verificarLogin(valorCPF, valorSenha) {
   const cpfArmazenado = localStorage.getItem("cpf");
   const senhaArmazenada = localStorage.getItem("senha");
 
-  // Obter número de tentativas armazenado no localStorage
-  let numeroTentativas = localStorage.getItem("numeroTentativas");
+  let numeroTentativas;
 
-  // Se não houver valor armazenado, definir como 0
   if (!numeroTentativas) {
     numeroTentativas = 0;
   }
 
-  if (valorCPF === cpfArmazenado && valorSenha === senhaArmazenada) {
+  if (valorCPF == cpfArmazenado && valorSenha == senhaArmazenada) {
     // Valores correspondem, pode prosseguir para o login
     window.location.href = "dashboard.html";
   } else {
     // Valores não correspondem, incrementar o número de tentativas
     numeroTentativas++;
-    localStorage.setItem("numeroTentativas", numeroTentativas);
 
     if (numeroTentativas >= 3) {
       // Se excedeu o número de tentativas permitidas, redirecionar para a tela de registro

@@ -1,9 +1,10 @@
 let mensagem = document.getElementsByClassName('form-control');
+let valorCPF, valorEmail, valorSenha;
 
 function valorBotao() {
-  const valorCPF = document.getElementById('number').value; // Valor do CPF inserido
-  const valorEmail = document.getElementById("email").value; // Valor do email inserido
-  const valorSenha = document.getElementById("password").value; // Valor da senha inserida
+valorCPF = document.getElementById('number').value; // Valor do CPF inserido
+valorEmail = document.getElementById("email").value; // Valor do email inserido
+valorSenha = document.getElementById("password").value; // Valor da senha inserida
 
   localStorage.setItem("cpf", valorCPF);
   localStorage.setItem("email", valorEmail);
@@ -12,7 +13,18 @@ function valorBotao() {
   window.location.href = "home.html";
 }
 
-//validarCPF(valorCPF);
+function verificarLogin() {
+  const cpfArmazenado = localStorage.getItem("cpf");
+  const senhaArmazenada = localStorage.getItem("senha");
+
+  if (valorCPF === cpfArmazenado && valorSenha === senhaArmazenada) {
+    // Valores correspondem, pode prosseguir para o login
+    window.location.href = "dashboard.html";
+  } else {
+    // Valores não correspondem, exibir mensagem de erro
+    mensagem.innerHTML = 'Os valores informados estão incorretos. Verifique novamente.';
+  }
+}
 
 function validarCPF(valorCPF) {
   if (valorCPF.length < 11 || valorCPF.length > 11) // CPF inválido por tamanho

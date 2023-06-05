@@ -11,6 +11,7 @@ function valorBotao() {
   }, 5000);
 
   const valorCPF = document.getElementById('number').value; 
+  validarCPF(valorCPF);
   const valorSenha = document.getElementById("password").value; 
 
   localStorage.setItem("cpf", valorCPF);
@@ -20,15 +21,14 @@ function valorBotao() {
 }
 
 function verificarLogin() {
-  let tentativasLogin = 0; // Inicializa o contador de tentativas
-  const valorCPF = document.getElementById('number').value; // Valor do CPF inserido
-  const valorSenha = document.getElementById('password').value; // Valor da senha inserida
+  let tentativasLogin = 0;
+  const valorCPF = document.getElementById('number').value; 
+  const valorSenha = document.getElementById('password').value; 
 
   const cpfArmazenado = localStorage.getItem("cpf");
   const senhaArmazenada = localStorage.getItem("password");
 
   if (valorCPF === cpfArmazenado && valorSenha === senhaArmazenada) {
-    // Valores correspondem, pode prosseguir para o login
     window.location.href = "landing.html";
   } else {
     tentativasLogin++;
@@ -36,10 +36,9 @@ function verificarLogin() {
       mensagem.innerHTML = 'Você excedeu o número máximo de tentativas de login. <br> Por favor, registre-se novamente.';
       mensagem.classList.add('mensagem');
       setTimeout(function() {
-        window.location.href = 'index.html'; // Redireciona para a tela de registro
-      }, 3000); // Espera 3 segundos antes de redirecionar
+        window.location.href = 'index.html'; 
+      }, 3000); 
     } else {
-      // Valores incorretos, exibir mensagem de erro
       mensagem.innerHTML = 'Os valores informados estão incorretos. <br> Tente novamente!';
       mensagem.classList.add('mensagem');
 
@@ -50,21 +49,31 @@ function verificarLogin() {
 
         if (count < 0) {
           clearInterval(countdown);
-          location.reload(); // Atualizar a página
+          location.reload(); 
         }
       }, 1000);
     }
   }
+
+  validarCPF(valorCPF);
 }
 
 function validarCPF(valorCPF) {
   if (valorCPF.length < 11 || valorCPF.length > 11) 
   { 
     mensagem.innerHTML = 'Tamanho do CPF inválido!';
+    mensagem.classList.add('mensagem');
+    setTimeout(function() {
+      location.reload();
+    }, 3000);
   } 
   else if (valorCPF === valorCPF.split('').reverse().join('')) 
   { 
-    mensagem.innerHTML = 'CPF não pode conter todos os números iguais!';
+    mensagem.innerHTML = 'CPF não pode conter todos <br> os números iguais!';
+    mensagem.classList.add('mensagem');
+    setTimeout(function() {
+      location.reload();
+    }, 3000);
   } 
   else 
   {
@@ -90,11 +99,15 @@ function validarCPF(valorCPF) {
 
     if (parseInt(valorCPF.charAt(9)) === primeiroDigito && parseInt(valorCPF.charAt(10)) === segundoDigito) 
     {
-      mensagem.innerHTML = 'CPF válido';
+      console.log('CPF válido');
     } 
     else 
     {
       mensagem.innerHTML = 'CPF inválido';
+      mensagem.classList.add('mensagem');
+      setTimeout(function() {
+        location.reload();
+      }, 3000);
     }
   }
 }

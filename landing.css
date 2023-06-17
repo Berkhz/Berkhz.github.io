@@ -1,6 +1,7 @@
 * {
-  max-width: 100%;
-  max-height: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -9,15 +10,35 @@ body {
 
 header {
   background-color: #F5F5F5;
-  max-height: 100%;
-  max-width: 100%;
   padding: 40px;
   text-align: center;
-  align-items: center;
+}
+
+.logo {
+  max-width: 100%;
+  height: auto;
 }
 
 #esquerda-dashboard {
   background-color: #2D3B62;
+  padding: 20px;
+}
+
+.menu {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.menu li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.menu a {
+  color: #FFF;
+  text-decoration: none;
+  padding: 8px 16px;
 }
 
 main {
@@ -25,8 +46,22 @@ main {
   padding: 20px;
 }
 
+#texto-central {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#solicitacoes, #duvidas {
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin-bottom: 10px;
+}
+
 #direita-dashboard {
   background-color: #A0B7D2;
+  padding: 20px;
 }
 
 footer {

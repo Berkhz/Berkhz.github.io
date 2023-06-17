@@ -5,6 +5,10 @@
   font-family: 'Inter', sans-serif;
 }
 
+span {
+  font-size: 15px;
+}
+
 body {
   background-color: #A8D2A0;
 }
@@ -29,7 +33,7 @@ header {
 }
 
 .header-icons img {
-  height: 20px;
+  height: 50px;
 }
 
 #esquerda-dashboard {
@@ -41,6 +45,8 @@ header {
 
 #menu {
   color: #FFF;
+  text-align: center;
+  padding: 10px;
 }
 
 .menu {
@@ -74,6 +80,17 @@ header {
   flex-direction: column;
 }
 
+.section-box,
+.caixa-atendimento {
+  background-color: #fff;
+  padding: 50px;
+  border-radius: 70px;
+  width: 60%;
+  color: #2D3B62;
+  margin-top: 20px;
+  align-items: center;
+}
+
 .brasao-container {
   display: flex;
   justify-content: center;
@@ -98,9 +115,8 @@ main {
 }
 
 .caixa-atendimento {
+  color: #fff;
   background-color: #2D3B62;
-  padding: 20px;
-  border-radius: 10px;
 }
 
 #texto-central {
@@ -112,6 +128,8 @@ main {
   padding: 20px;
   float: right;
   width: 20%;
+  height: 100%; 
+  box-sizing: border-box;
 }
 
 .graficos {
@@ -119,6 +137,8 @@ main {
   border-radius: 10px;
   color: #2D3B62;
   text-align: center;
+  height: 100%; 
+  box-sizing: border-box; 
 }
 
 .versao {

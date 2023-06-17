@@ -108,23 +108,31 @@ main {
 }
 
 #direita-dashboard {
-  background-color: #A0B7D2;
+  background-color: #E7F7FB;
   padding: 20px;
   float: right;
   width: 20%;
 }
 
-footer {
-  background-color: #F5F5F5;
-  padding: 20px;
-  text-align: center;
-  clear: both;
-}
-
 .graficos {
-  background-color: #A0B7D2;
   padding: 20px;
   border-radius: 10px;
   color: #2D3B62;
   text-align: center;
+}
+
+.versao {
+  margin: 0;
+}
+
+.data {
+  margin: 0;
+}
+
+footer {
+  background-color: #F5F5F5;
+  display: flex;
+  padding: 20px;
+  text-align: center;
+  clear: both;
 }

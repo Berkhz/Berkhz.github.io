@@ -3,18 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Certificado</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #3498db; /* Fundo azul */
+            color: white; /* Texto branco */
+            margin: 0;
+            padding: 0;
+        }
+
+        .certificate-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 2px solid #2980b9; /* Borda azul mais escura */
+            border-radius: 10px;
+            background-color: #3498db; /* Fundo azul */
+        }
+
+        h1 {
+            color: #fff; /* Título branco */
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .additional-text {
+            font-size: 16px;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
+    <div class="certificate-container">
+        <h1>Certificado</h1>
+        <p>Esta é para certificar que</p>
+        <h2>Você</h2>
+        <p>Concluiu com sucesso o CodeQuest</p>
+        <p>Conferido em: 15 de Novembro de 2023</p>
+        <p>Parabéns por sua conquista!</p>
+        <p class="additional-text">Este certificado é uma prova do seu esforço e dedicação.</p>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" 
     referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <div>
-        <h1>Certificado</h1>
-        <p>Parabéns, você concluiu o CodeQuest!</p>
-    </div>
+
+    <script>
+        function gerarPDF() {
+            html2pdf(document.body, {
+                margin: 10,
+                filename: 'certificado.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            });
+        }
+
+        window.onload = function() {
+            gerarPDF();
+        };
+    </script>
 </body>
 </html>

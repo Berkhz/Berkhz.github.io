@@ -288,22 +288,7 @@
         }
     
         function gerarCertificado() {
-            fetch('certificate.html')
-                .then(response => response.text())
-                .then(certificateHTML => {
-                    const element = document.createElement("div");
-                    element.innerHTML = certificateHTML;
-                    console.log(element.innerHTML);
-                
-                    html2pdf(element, {
-                        margin: 10,
-                        filename: 'certificado.pdf',
-                        image: { type: 'jpeg', quality: 0.98 },
-                        html2canvas: { scale: 2 },
-                        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-                    });
-                })
-                .catch(error => console.error('Erro ao carregar o certificado:', error));
+            const certificateWindow = window.open('certificate.html', '_blank');
         }
 
     </script>
